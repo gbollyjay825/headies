@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="gold">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 18th Headies — Africa to the World</title>
+<link rel="stylesheet" href="headies.css">
+<style>
+  /* ---- theme: light overrides (driven by Tweaks) ---- */
+  body[data-theme="light"]{
+    --bg:var(--paper);--bg-2:var(--paper-2);--bg-card:#fffdf8;
+    --fg:var(--ink-900);--fg-dim:rgba(8,8,10,.62);--fg-faint:rgba(8,8,10,.42);
+    --line:rgba(8,8,10,.10);--line-strong:rgba(8,8,10,.16);
+  }
+  body[data-theme="light"] .section--ink{background:var(--paper-2)}
+  body[data-theme="light"] .marquee,body[data-theme="light"] .join,
+  body[data-theme="light"] .footer,body[data-theme="light"] .pagehead{background:#fff8ea}
+  body[data-theme="light"] .nav.scrolled{background:rgba(243,237,224,.86);border-bottom-color:var(--line-gold)}
+  body[data-theme="light"] .nav:not(.scrolled) .brand,
+  body[data-theme="light"] .nav:not(.scrolled) .nav__links a{color:var(--cream)}
+
+  /* ---- accent variants ---- */
+  html[data-accent="crimson"]{--gold:#d8324f;--gold-200:#f2a6b3;--gold-300:#ec798c;--gold-600:#b51e3a;--gold-700:#8c1730;
+    --gold-foil:linear-gradient(135deg,#f7b3c0 0%,#e0556f 30%,#d8324f 55%,#9c1733 100%);
+    --gold-sheen:linear-gradient(100deg,#9c1733 0%,#d8324f 20%,#f7b3c0 40%,#d8324f 62%,#9c1733 100%);
+    --line-gold:rgba(216,50,79,.22);--glow-gold:0 0 0 1px rgba(216,50,79,.5),0 12px 50px rgba(216,50,79,.22)}
+  html[data-accent="orange"]{--gold:#f58220;--gold-200:#fbcd9c;--gold-300:#f8ac63;--gold-600:#d96d12;--gold-700:#a8530c;
+    --gold-foil:linear-gradient(135deg,#fcd0a4 0%,#f79a44 30%,#f58220 55%,#bf5e0e 100%);
+    --gold-sheen:linear-gradient(100deg,#bf5e0e 0%,#f58220 20%,#fcd0a4 40%,#f58220 62%,#bf5e0e 100%);
+    --line-gold:rgba(245,130,32,.22);--glow-gold:0 0 0 1px rgba(245,130,32,.5),0 12px 50px rgba(245,130,32,.22)}
+
+  /* ---- hero layout variants ---- */
+  .hero[data-hero="left"] .hero__inner{max-width:var(--container-wide)}
+  .hero[data-hero="left"] .hero__inner > div:first-child{max-width:1000px}
+  .hero[data-hero="centered"]{text-align:center}
+  .hero[data-hero="centered"] .hero__inner{max-width:920px;margin:0 auto}
+  .hero[data-hero="centered"] .hero__sub{margin-left:auto;margin-right:auto}
+  .hero[data-hero="centered"] .hero__cta,.hero[data-hero="centered"] .countdown{justify-content:center}
+  .hero[data-hero="centered"] .eyebrow{justify-content:center}
+  .hero[data-hero="centered"] .eyebrow::after{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+  .hero[data-hero="split"] .hero__inner{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;max-width:var(--container)}
+  .hero[data-hero="split"] .hero__bg{left:auto;right:0;width:46%;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%)}
+  .hero[data-hero="split"] .hero__scrim{background:linear-gradient(90deg,var(--ink-900) 30%,transparent 100%)}
+  .hero[data-hero="split"] .hero__figure{display:block}
+  .hero__figure{display:none}
+  @media(max-width:860px){
+    .hero[data-hero="split"] .hero__inner{grid-template-columns:1fr}
+    .hero[data-hero="split"] .hero__bg{width:100%;clip-path:none}
+    .hero[data-hero="split"] .hero__figure{display:none}
+    .hero[data-hero="split"] .hero__scrim{background:linear-gradient(180deg,rgba(8,8,10,.6),var(--ink-900))}
+  }
+  .journey{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:18px;margin-top:8px}
+  .journey__stop{text-align:center;padding:26px 18px;border:1px solid var(--line-gold);border-radius:var(--r-lg);
+    background:var(--bg-card);position:relative}
+  .journey__stop.is-now{background:radial-gradient(120% 130% at 50% 0%,rgba(212,175,55,.16),transparent 60%),var(--bg-card);
+    box-shadow:var(--glow-gold)}
+  .journey__city{font-family:var(--font-display);font-weight:800;font-size:1.7rem;line-height:1}
+  .journey__yr{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+  .journey__note{font-size:.82rem;color:var(--fg-dim);margin-top:8px}
+  .journey__arrow{color:var(--gold);display:grid;place-items:center}
+  .journey__arrow .icon{width:26px;height:26px}
+  .journey__badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold-foil);
+    color:#1c1402;font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 12px;border-radius:var(--r-pill);white-space:nowrap}
+  @media(max-width:860px){.journey{grid-template-columns:1fr;gap:10px}.journey__arrow{transform:rotate(90deg);margin:2px 0}}
+
+  .videofeat{display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+  .videofeat__main{position:relative;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-gold)}
+  .videofeat__side{display:flex;flex-direction:column;gap:16px}
+  .vrow{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center;cursor:pointer;
+    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg-card);transition:border-color .3s,transform .3s}
+  .vrow:hover{border-color:var(--line-gold);transform:translateX(4px)}
+  .vrow__thumb{position:relative;aspect-ratio:16/10}
+  .vrow__t{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.15;padding-right:14px}
+  .play-btn{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
+  .play-btn span{width:62px;height:62px;border-radius:50%;background:rgba(212,175,55,.92);color:#1c1402;
+    display:grid;place-items:center;box-shadow:0 8px 30px rgba(0,0,0,.5);transition:transform .3s}
+  .play-btn:hover span{transform:scale(1.08)}
+  .play-btn .icon{width:24px;height:24px;margin-left:3px}
+  @media(max-width:860px){.videofeat{grid-template-columns:1fr}}
+
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+  .gtile{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-gold);cursor:pointer}
+  .gtile image-slot,.gtile .ph{position:absolute;inset:0;height:100%}
+  .gtile.tall{grid-row:span 2}.gtile.wide{grid-column:span 2}
+  .gtile__o{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 50%,rgba(8,8,10,.8));
+    opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px}
+  .gtile:hover .gtile__o{opacity:1}
+  .gtile__o span{font-family:var(--font-display);font-weight:700;color:var(--cream)}
+  @media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.gtile.wide{grid-column:span 2}}
+
+  .travel-cta{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border:1px solid var(--line-gold);
+    border-radius:var(--r-lg);overflow:hidden}
+  .travel-cta__body{padding:clamp(32px,4vw,56px)}
+  .travel-cta__media{position:relative;min-height:280px}
+  .partner-strip{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--fg-faint);margin-bottom:20px}
+  .partner-strip b{color:var(--gold);font-weight:800}
+  @media(max-width:860px){.travel-cta{grid-template-columns:1fr}.travel-cta__media{min-height:200px}}
+</style>
+</head>
+<body data-theme="dark">
+<div class="grain"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="container container-wide nav__inner">
+    <a class="brand" href="index.html" aria-label="The Headies home">
+      <img class="brand__logo" src="assets/headies-logo.png" alt="The Headies">
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="winners.html">Winners</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="travel.html">Travel</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="events.html" class="btn btn-gold">Get Tickets</a>
+      <button class="nav__burger" aria-label="Open menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="drawer">
+  <button class="drawer__close" aria-label="Close menu"><i data-lucide="x"></i></button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="winners.html">Winners</a>
+  <a href="events.html">Events</a>
+  <a href="media.html">Media</a>
+  <a href="travel.html">Book Travel</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" data-hero="left" data-screen-label="Hero">
+  <div class="hero__bg">
+    <image-slot id="hero-bg" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=2200&q=80&auto=format&fit=crop" class="media-fill" shape="rect" fit="cover"
+      placeholder="Drop the 18th Headies key art / stage photo"></image-slot>
+    <div class="ph media-fill" style="position:absolute;inset:0;z-index:-1"></div>
+  </div>
+  <div class="hero__scrim hero__scrim--side"></div>
+  <div class="container container-wide hero__inner">
+    <div>
+      <p class="hero__edition">The 18th Headies · MMXXVI</p>
+      <h1 class="h-hero">AFRICA<br><span class="gold-text italic-serif" style="font-weight:600">to the</span> WORLD</h1>
+      <p class="hero__sub">For the first time, Africa's biggest and most prestigious music award crosses the Atlantic to <strong>Canada</strong> — a global stage for the sound that conquered the world. The Big Announcement drops June 15, 2026.</p>
+      <div class="hero__cta" style="margin-bottom:40px">
+        <a href="events.html" class="btn btn-gold btn-lg">Get Tickets</a>
+        <a href="media.html" class="btn btn-outline btn-lg"><i data-lucide="play" class="icon"></i> Watch the 17th</a>
+      </div>
+      <div class="countdown" data-countdown="2026-06-15T19:00:00" aria-label="Countdown to the Big Announcement">
+        <div class="cd-unit"><div class="cd-num" data-cd="days">00</div><div class="cd-label">Days</div></div>
+        <div class="cd-unit"><div class="cd-num" data-cd="hours">00</div><div class="cd-label">Hours</div></div>
+        <div class="cd-unit"><div class="cd-num" data-cd="minutes">00</div><div class="cd-label">Minutes</div></div>
+        <div class="cd-unit"><div class="cd-num" data-cd="seconds">00</div><div class="cd-label">Seconds</div></div>
+      </div>
+      <p class="muted" style="font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-top:14px">Until the Big Announcement</p>
+    </div>
+    <div class="hero__figure">
+      <image-slot id="hero-fig" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=900&q=80&auto=format&fit=crop" style="width:100%;aspect-ratio:3/4;border-radius:var(--r-lg)" shape="rounded" radius="14"
+        placeholder="Drop a headline-artist portrait"></image-slot>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>The 18th Headies</span><span>Africa to the World</span><span>The Big Announcement · June 15</span>
+    <span>Toronto, Canada</span><span>Celebrating Afrobeats</span>
+    <span>The 18th Headies</span><span>Africa to the World</span><span>The Big Announcement · June 15</span>
+    <span>Toronto, Canada</span><span>Celebrating Afrobeats</span>
+  </div>
+</div>
+
+<!-- ============ CANADA ANNOUNCEMENT / JOURNEY ============ -->
+<section class="section" data-screen-label="Canada announcement">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">The Big Move</p>
+        <h2 class="h2" style="margin-top:14px">The stage moves North</h2>
+      </div>
+      <p class="lead">From the streets of Lagos to the diaspora and now to Canada — the journey of African music's biggest night mirrors the global rise of the sound itself.</p>
+    </div>
+    <div class="journey reveal" data-d="1">
+      <div class="journey__stop">
+        <div class="journey__city">Lagos</div>
+        <div class="journey__yr">2006 – 2021 · Home</div>
+        <div class="journey__note">Where it all began — 14 editions on home soil.</div>
+      </div>
+      <div class="journey__arrow"><i data-lucide="plane" class="icon"></i></div>
+      <div class="journey__stop">
+        <div class="journey__city">Atlanta</div>
+        <div class="journey__yr">2022 – 2023 · USA</div>
+        <div class="journey__note">The first crossing — two editions in the diaspora.</div>
+      </div>
+      <div class="journey__arrow"><i data-lucide="plane" class="icon"></i></div>
+      <div class="journey__stop is-now">
+        <div class="journey__badge">The 18th · 2026</div>
+        <div class="journey__city gold-text">Canada</div>
+        <div class="journey__yr">2026 · New Frontier</div>
+        <div class="journey__note">A brand-new chapter for Africa to the World.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEGACY STATS ============ -->
+<section class="section section--ink" data-screen-label="Legacy stats">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Two decades of excellence</p>
+        <h2 class="h2">A legacy measured in milestones</h2>
+      </div>
+      <p class="lead">Since 2006, The Headies has been the definitive honour in African music — the night that crowned the stars now filling arenas across the globe.</p>
+    </div>
+    <div class="stats reveal" data-d="1">
+      <div class="stat"><div class="stat__num"><span data-count="18">18</span></div><div class="stat__label">Editions</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="20">20</span></div><div class="stat__label">Years of legacy</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="40" data-suffix="+">40+</span></div><div class="stat__label">Award categories</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="3">3</span></div><div class="stat__label">Continents staged</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section" data-screen-label="Timeline">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">The Headies through the years</p>
+        <h2 class="h2">From Hip Hop World to a global icon</h2>
+      </div>
+      <p class="lead">Drag to travel through the editions — every year a new chapter in the story of Afrobeats and African music.</p>
+    </div>
+    <div class="timeline reveal" data-d="1">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2006</div><div class="tl-ed">1st Edition · Lagos</div><div class="tl-theme">Where it began</div><div class="tl-note">Launched as the Hip Hop World Awards — the first night built to honour Nigerian music on its own terms.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2009</div><div class="tl-ed">4th Edition · Lagos</div><div class="tl-theme">The Headies is born</div><div class="tl-note">The awards take on the name the world now knows — The Headies.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2014</div><div class="tl-ed">8th Edition · Lagos</div><div class="tl-theme">A new generation</div><div class="tl-note">A wave of Next Rated talent steps into the spotlight, reshaping the sound.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2018</div><div class="tl-ed">12th Edition · Lagos</div><div class="tl-theme">Afrobeats ascends</div><div class="tl-note">The genre crosses borders as Nigerian stars headline global stages.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2022</div><div class="tl-ed">15th Edition · Atlanta</div><div class="tl-theme">The first crossing</div><div class="tl-note">For the first time, The Headies leaves Nigeria — staged in Atlanta, USA.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-ed">16th Edition · Atlanta</div><div class="tl-theme">Diaspora nights</div><div class="tl-note">A second year abroad cements the show's global footprint.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-ed">17th Edition · Lagos</div><div class="tl-theme">Back to Base</div><div class="tl-note">A triumphant homecoming at the Landmark Event Centre — a night of rhythm, recognition and star-studded excellence.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2026</div><div class="tl-ed">18th Edition · Canada</div><div class="tl-theme gold-text">Africa to the World</div><div class="tl-note">The biggest leap yet — African music's crowning night arrives in Canada.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HALL OF LEGENDS ============ -->
+<section class="section section--ink" data-screen-label="Legends">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Hall of legends</p>
+        <h2 class="h2">The names the Headies helped crown</h2>
+      </div>
+      <a href="winners.html" class="tlink">See all winners <i data-lucide="arrow-right" class="icon" style="width:16px"></i></a>
+    </div>
+    <div class="grid grid-4">
+      <article class="legend reveal" data-d="1">
+        <image-slot id="legend-1" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop artist photo"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+        <div class="legend__grad"></div>
+        <div class="legend__body"><div class="legend__name">Wizkid</div><div class="legend__meta">Artiste of the Year</div></div>
+      </article>
+      <article class="legend reveal" data-d="2">
+        <image-slot id="legend-2" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop artist photo"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+        <div class="legend__grad"></div>
+        <div class="legend__body"><div class="legend__name">Burna Boy</div><div class="legend__meta">Album of the Year</div></div>
+      </article>
+      <article class="legend reveal" data-d="3">
+        <image-slot id="legend-3" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop artist photo"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+        <div class="legend__grad"></div>
+        <div class="legend__body"><div class="legend__name">Tiwa Savage</div><div class="legend__meta">Best Female Vocal</div></div>
+      </article>
+      <article class="legend reveal" data-d="4">
+        <image-slot id="legend-4" src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop artist photo"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+        <div class="legend__grad"></div>
+        <div class="legend__body"><div class="legend__name">Asa</div><div class="legend__meta">Lifetime in song</div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section" data-screen-label="Gallery">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Unforgettable memories</p>
+        <h2 class="h2">The Headies gallery</h2>
+      </div>
+      <p class="lead">Relive the moments that defined excellence — artistry, culture and performances that stopped a continent.</p>
+    </div>
+    <div class="gallery reveal" data-d="1">
+      <div class="gtile wide" data-lb="17th Headies — Back to Base, Lagos 2025"><image-slot id="g1" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>Back to Base · 2025</span></div></div>
+      <div class="gtile tall" data-lb="Red carpet glamour"><image-slot id="g2" src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>The red carpet</span></div></div>
+      <div class="gtile" data-lb="On-stage performance"><image-slot id="g3" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>Live on stage</span></div></div>
+      <div class="gtile" data-lb="Award presentation"><image-slot id="g4" src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>The moment</span></div></div>
+      <div class="gtile" data-lb="Creative Summit, Lagos"><image-slot id="g5" src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>Creative Summit</span></div></div>
+      <div class="gtile" data-lb="Backstage celebrations"><image-slot id="g6" src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>Backstage</span></div></div>
+      <div class="gtile wide" data-lb="The crowd · music's biggest night"><image-slot id="g7" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1600&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="gtile__o"><span>Music's biggest night</span></div></div>
+    </div>
+    <div class="center" style="margin-top:40px"><a href="media.html" class="btn btn-outline">View full gallery</a></div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="section section--ink" data-screen-label="News">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Recent highlights</p>
+        <h2 class="h2">Latest from The Headies</h2>
+      </div>
+      <a href="media.html" class="tlink">Explore all news <i data-lucide="arrow-right" class="icon" style="width:16px"></i></a>
+    </div>
+    <div class="grid grid-3">
+      <article class="card reveal" data-d="1">
+        <div class="card__media"><image-slot id="n1" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1400&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"><span class="ph__cap">News · April 2025</span></div></div>
+        <div class="card__body"><span class="card__tag">News</span><h3 class="card__title">The 17th Headies Awards</h3><p class="muted" style="font-size:.95rem">Glamour, style and unforgettable moments as the stars showed up and showed out in grand style.</p><div class="card__meta"><i data-lucide="calendar" class="icon" style="width:15px"></i> April 28, 2025</div></div>
+      </article>
+      <article class="card reveal" data-d="2">
+        <div class="card__media"><image-slot id="n2" src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1400&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"><span class="ph__cap">News · April 2025</span></div></div>
+        <div class="card__body"><span class="card__tag">News</span><h3 class="card__title">The Headies Creative Summit</h3><p class="muted" style="font-size:.95rem">A groundbreaking two-day gathering in Lagos for the architects of African creativity.</p><div class="card__meta"><i data-lucide="calendar" class="icon" style="width:15px"></i> April 24, 2025</div></div>
+      </article>
+      <article class="card reveal" data-d="3">
+        <div class="card__media"><image-slot id="n3" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1400&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"><span class="ph__cap">News · Jan 2025</span></div></div>
+        <div class="card__body"><span class="card__tag">News</span><h3 class="card__title">The Big Announcement</h3><p class="muted" style="font-size:.95rem">The reveal that set the stage for the most anticipated night in African music.</p><div class="card__meta"><i data-lucide="calendar" class="icon" style="width:15px"></i> January 30, 2025</div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section class="section" data-screen-label="Videos">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Watch</p>
+        <h2 class="h2">The Headies videos</h2>
+      </div>
+      <a href="media.html" class="tlink">All videos <i data-lucide="arrow-right" class="icon" style="width:16px"></i></a>
+    </div>
+    <div class="videofeat reveal" data-d="1">
+      <div class="videofeat__main" data-lb="The 17th Headies — Back to Base · Full Show">
+        <image-slot id="v-main" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop video thumbnail"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+        <div class="legend__grad"></div>
+        <div class="play-btn"><span><i data-lucide="play" class="icon"></i></span></div>
+        <div style="position:absolute;left:24px;bottom:22px;z-index:3">
+          <div class="card__tag">Full Show</div>
+          <div style="font-family:var(--font-display);font-weight:800;font-size:1.5rem;max-width:24ch">The 17th Headies — Back to Base</div>
+        </div>
+      </div>
+      <div class="videofeat__side">
+        <div class="vrow" data-lb="Odumodublvck wins Next Rated">
+          <div class="vrow__thumb"><image-slot id="v1" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&q=80&auto=format&fit=crop" class="media-fill" placeholder="Thumb"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="play-btn"><span style="width:42px;height:42px"><i data-lucide="play" class="icon" style="width:16px"></i></span></div></div>
+          <div class="vrow__t">Odumodublvck wins Next Rated — the award from Davido</div>
+        </div>
+        <div class="vrow" data-lb="Special Recognition Award">
+          <div class="vrow__thumb"><image-slot id="v2" src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=500&q=80&auto=format&fit=crop" class="media-fill" placeholder="Thumb"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="play-btn"><span style="width:42px;height:42px"><i data-lucide="play" class="icon" style="width:16px"></i></span></div></div>
+          <div class="vrow__t">Before Global Fame, There Was Base — the documentary</div>
+        </div>
+        <div class="vrow" data-lb="Tribute to Mohbad">
+          <div class="vrow__thumb"><image-slot id="v3" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=500&q=80&auto=format&fit=crop" class="media-fill" placeholder="Thumb"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="play-btn"><span style="width:42px;height:42px"><i data-lucide="play" class="icon" style="width:16px"></i></span></div></div>
+          <div class="vrow__t">The 17th Headies pay tribute to Mohbad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAVEL (Wakanow partner) ============ -->
+<section class="section section--ink" data-screen-label="Travel">
+  <div class="container">
+    <div class="travel-cta reveal">
+      <div class="travel-cta__body">
+        <div class="partner-strip"><i data-lucide="plane-takeoff" class="icon" style="width:16px;color:var(--gold)"></i> Official Travel Partner · <b>Wakanow</b></div>
+        <h2 class="h3">Be in the room when Africa meets the world</h2>
+        <p class="lead" style="margin:14px 0 26px">Flights, stays and airport transfers to Canada — booked seamlessly through our official travel partner, with installment plans so you never miss the night.</p>
+        <a href="travel.html" class="btn btn-gold">Plan your trip <i data-lucide="arrow-right" class="icon"></i></a>
+      </div>
+      <div class="travel-cta__media">
+        <image-slot id="travel-bg" src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=1200&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a Canada / travel image"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN ============ -->
+<section class="section" data-screen-label="Join">
+  <div class="container">
+    <div class="join reveal">
+      <p class="eyebrow eyebrow--center">Join the celebration</p>
+      <h2 class="h2" style="margin-top:16px">Join our music revolution</h2>
+      <p class="lead center" style="margin:14px auto 0">Be first to know when the nominees drop and tickets open. Exclusive updates, behind-the-scenes access and the biggest announcements — straight to your inbox.</p>
+      <form class="subscribe" onsubmit="return false">
+        <input type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button class="btn btn-gold" type="submit">Join Now</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container container-wide">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="index.html"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+        <p class="muted" style="max-width:38ch;font-size:.95rem">Africa's biggest and most prestigious music award — celebrating the best in Afrobeats, African music, global sound and culture since 2006.</p>
+      </div>
+      <div class="footer__cols">
+        <h5>Explore</h5>
+        <a href="about.html">About</a><a href="winners.html">Winners</a><a href="events.html">Events</a><a href="media.html">Media</a>
+      </div>
+      <div class="footer__cols">
+        <h5>The 18th</h5>
+        <a href="events.html">Get Tickets</a><a href="travel.html">Book Travel</a><a href="#">Become a Partner</a><a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="copyright">© 2026 The Headies. Africa to the World.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.5a3 3 0 0 0-2.11-2.12C19.5 3.86 12 3.86 12 3.86s-7.5 0-9.39.52A3 3 0 0 0 .5 6.5 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.5 3 3 0 0 0 2.11 2.12c1.89.52 9.39.52 9.39.52s7.5 0 9.39-.52a3 3 0 0 0 2.11-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.5ZM9.6 15.57V8.43L15.82 12 9.6 15.57Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox__close" aria-label="Close"><i data-lucide="x"></i></button>
+  <button class="lightbox__nav prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+  <button class="lightbox__nav next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+  <div class="lightbox__inner">
+    <div class="lightbox__frame"></div>
+    <div class="lightbox__cap"></div>
+  </div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="image-slot.js"></script>
+<script src="headies.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="gold">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events &amp; Tickets · The Headies</title>
+<link rel="stylesheet" href="headies.css">
+<style>
+  .evlist{display:flex;flex-direction:column;gap:20px}
+  .ev{display:grid;grid-template-columns:200px 1fr auto;gap:28px;align-items:center;
+    border:1px solid var(--line-gold);border-radius:var(--r-lg);overflow:hidden;background:var(--bg-card);
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .ev:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+  .ev__media{position:relative;align-self:stretch;min-height:150px}
+  .ev__media image-slot,.ev__media .ph{position:absolute;inset:0;height:100%}
+  .ev__body{padding:24px 0}
+  .ev__date{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .ev__title{font-family:var(--font-display);font-weight:800;font-size:1.5rem;margin:8px 0 8px}
+  .ev__cta{padding-right:28px}
+  @media(max-width:860px){.ev{grid-template-columns:1fr}.ev__media{min-height:160px}.ev__body{padding:0 24px}.ev__cta{padding:0 24px 24px}}
+
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}
+  @media(max-width:1020px){.tiers{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.tiers{grid-template-columns:1fr}}
+  .tier{display:flex;flex-direction:column;border:1px solid var(--line-gold);border-radius:var(--r-lg);
+    padding:32px 26px;background:var(--bg-card);position:relative;overflow:hidden}
+  .tier.feat{background:radial-gradient(120% 100% at 50% 0,rgba(212,175,55,.16),transparent 60%),var(--ink-800);
+    box-shadow:var(--glow-gold);border-color:var(--gold)}
+  .tier__name{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .tier__price{font-family:var(--font-display);font-weight:800;font-size:2.6rem;line-height:1;margin:14px 0 4px}
+  .tier__price small{font-family:var(--font-body);font-size:.8rem;color:var(--fg-faint);font-weight:600;letter-spacing:.04em}
+  .tier ul{list-style:none;margin:20px 0 26px;display:flex;flex-direction:column;gap:11px;flex:1}
+  .tier li{display:flex;gap:10px;font-size:.92rem;color:var(--fg-dim);align-items:flex-start}
+  .tier li .icon{width:17px;height:17px;color:var(--gold);flex-shrink:0;margin-top:3px}
+  .tier__flag{position:absolute;top:16px;right:-30px;transform:rotate(45deg);background:var(--gold-foil);color:#1c1402;
+    font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 36px}
+  .cd-band{border:1px solid var(--line-gold);border-radius:var(--r-lg);padding:38px;text-align:center;
+    background:radial-gradient(120% 130% at 50% 0,rgba(212,175,55,.12),transparent 55%),var(--ink-850)}
+</style>
+</head>
+<body data-theme="dark">
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="container container-wide nav__inner">
+    <a class="brand" href="index.html" aria-label="The Headies home"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="winners.html">Winners</a></li><li><a href="events.html" aria-current="page">Events</a></li>
+      <li><a href="media.html">Media</a></li><li><a href="travel.html">Travel</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="#tickets" class="btn btn-gold">Get Tickets</a>
+      <button class="nav__burger" aria-label="Open menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="drawer">
+  <button class="drawer__close" aria-label="Close menu"><i data-lucide="x"></i></button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="winners.html">Winners</a>
+  <a href="events.html">Events</a><a href="media.html">Media</a><a href="travel.html">Book Travel</a>
+</div>
+
+<header class="pagehead" data-screen-label="Events header">
+  <div class="container">
+    <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Events</p>
+    <p class="eyebrow">The road to Canada</p>
+    <h1 class="h1">Everything leading to <span class="gold-text">the night</span></h1>
+    <p class="lead">The 18th Headies is more than one ceremony — it's a season of celebration, building to Africa's biggest music night, live in Canada.</p>
+  </div>
+</header>
+
+<!-- COUNTDOWN -->
+<section class="section section--tight" data-screen-label="Events countdown">
+  <div class="container">
+    <div class="cd-band reveal">
+      <p class="eyebrow eyebrow--center" style="justify-content:center">The Big Announcement</p>
+      <h2 class="h3" style="margin:14px 0 24px">Nominees revealed June 15, 2026</h2>
+      <div class="countdown" data-countdown="2026-06-15T19:00:00" style="justify-content:center">
+        <div class="cd-unit"><div class="cd-num" data-cd="days">00</div><div class="cd-label">Days</div></div>
+        <div class="cd-unit"><div class="cd-num" data-cd="hours">00</div><div class="cd-label">Hours</div></div>
+        <div class="cd-unit"><div class="cd-num" data-cd="minutes">00</div><div class="cd-label">Minutes</div></div>
+        <div class="cd-unit"><div class="cd-num" data-cd="seconds">00</div><div class="cd-label">Seconds</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT LINEUP -->
+<section class="section" data-screen-label="Lineup">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title"><p class="eyebrow">The 18th Headies season</p><h2 class="h2" style="margin-top:14px">The lineup</h2></div>
+      <p class="lead">From the nominee reveal to the main event — every moment on the road to the world stage.</p>
+    </div>
+    <div class="evlist">
+      <article class="ev reveal" data-d="1">
+        <div class="ev__media"><image-slot id="ev1" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=700&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+        <div class="ev__body"><div class="ev__date">Mon · June 15, 2026</div><div class="ev__title">The Big Announcement</div><p class="muted" style="font-size:.95rem;max-width:48ch">The full nominee list across every category is unveiled — the moment the race to the 18th Headies officially begins.</p></div>
+        <div class="ev__cta"><a href="#" class="btn btn-outline">Set reminder</a></div>
+      </article>
+      <article class="ev reveal" data-d="1">
+        <div class="ev__media"><image-slot id="ev2" src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=700&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+        <div class="ev__body"><div class="ev__date">Summer 2026 · Canada</div><div class="ev__title">The Headies Creative Summit</div><p class="muted" style="font-size:.95rem;max-width:48ch">A gathering for the architects of African creativity — panels, masterclasses and networking with the industry's biggest names.</p></div>
+        <div class="ev__cta"><a href="#" class="btn btn-outline">Register interest</a></div>
+      </article>
+      <article class="ev reveal" data-d="1">
+        <div class="ev__media"><image-slot id="ev3" src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=700&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+        <div class="ev__body"><div class="ev__date">Awards week · Canada</div><div class="ev__title">The Nominees' Reception</div><p class="muted" style="font-size:.95rem;max-width:48ch">An exclusive, invitation-only celebration honouring the nominees ahead of the main ceremony.</p></div>
+        <div class="ev__cta"><a href="#" class="btn btn-outline">By invitation</a></div>
+      </article>
+      <article class="ev reveal" data-d="1" style="border-color:var(--gold);box-shadow:var(--glow-gold)">
+        <div class="ev__media"><image-slot id="ev4" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80&auto=format&fit=crop" class="media-fill" placeholder="Photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+        <div class="ev__body"><div class="ev__date" style="color:var(--gold)">★ The main event · Canada</div><div class="ev__title">The 18th Headies Awards Night</div><p class="muted" style="font-size:.95rem;max-width:48ch">Africa's biggest music night — live performances, the red carpet, and the golden statuettes handed to the year's very best.</p></div>
+        <div class="ev__cta"><a href="#tickets" class="btn btn-gold">Get Tickets</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="section section--ink" id="tickets" data-screen-label="Tickets">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Awards Night · Canada</p>
+        <h2 class="h2" style="margin-top:14px">Choose your experience</h2>
+      </div>
+      <p class="lead">Indicative pricing in CAD. Pair any ticket with flights &amp; stays through our official travel partner.</p>
+    </div>
+    <div class="tiers">
+      <div class="tier reveal" data-d="1">
+        <div class="tier__name">General</div>
+        <div class="tier__price">$149<small> CAD</small></div>
+        <p class="muted" style="font-size:.86rem">The full show, the full energy.</p>
+        <ul>
+          <li><i data-lucide="check" class="icon"></i> Admission to the ceremony</li>
+          <li><i data-lucide="check" class="icon"></i> Live performances</li>
+          <li><i data-lucide="check" class="icon"></i> Access to general concourse</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Select</a>
+      </div>
+      <div class="tier feat reveal" data-d="2">
+        <div class="tier__flag">Most popular</div>
+        <div class="tier__name">Premium</div>
+        <div class="tier__price">$349<small> CAD</small></div>
+        <p class="muted" style="font-size:.86rem">The best seats in the house.</p>
+        <ul>
+          <li><i data-lucide="check" class="icon"></i> Priority lower-tier seating</li>
+          <li><i data-lucide="check" class="icon"></i> Red-carpet entry</li>
+          <li><i data-lucide="check" class="icon"></i> Welcome drink &amp; programme</li>
+          <li><i data-lucide="check" class="icon"></i> Fast-track entry</li>
+        </ul>
+        <a href="#" class="btn btn-gold">Select</a>
+      </div>
+      <div class="tier reveal" data-d="3">
+        <div class="tier__name">VIP Experience</div>
+        <div class="tier__price">$899<small> CAD</small></div>
+        <p class="muted" style="font-size:.86rem">Where the stars sit.</p>
+        <ul>
+          <li><i data-lucide="check" class="icon"></i> Front-section VIP seating</li>
+          <li><i data-lucide="check" class="icon"></i> Lounge &amp; open bar access</li>
+          <li><i data-lucide="check" class="icon"></i> After-party entry</li>
+          <li><i data-lucide="check" class="icon"></i> Commemorative gift</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Select</a>
+      </div>
+      <div class="tier reveal" data-d="4">
+        <div class="tier__name">Table of 10</div>
+        <div class="tier__price">$7,500<small> CAD</small></div>
+        <p class="muted" style="font-size:.86rem">Host in style.</p>
+        <ul>
+          <li><i data-lucide="check" class="icon"></i> Private premium table</li>
+          <li><i data-lucide="check" class="icon"></i> Bottle service</li>
+          <li><i data-lucide="check" class="icon"></i> Dedicated host</li>
+          <li><i data-lucide="check" class="icon"></i> 10 after-party passes</li>
+        </ul>
+        <a href="#" class="btn btn-outline">Enquire</a>
+      </div>
+    </div>
+    <p class="center muted" style="margin-top:28px;font-size:.9rem">Travelling in? <a href="travel.html" class="tlink" style="font-size:.8rem">Book flights &amp; stays with Wakanow <i data-lucide="arrow-right" class="icon" style="width:14px"></i></a></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container container-wide">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="index.html"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+        <p class="muted" style="max-width:38ch;font-size:.95rem">Africa's biggest and most prestigious music award — celebrating the best in Afrobeats, African music, global sound and culture since 2006.</p>
+      </div>
+      <div class="footer__cols"><h5>Explore</h5><a href="about.html">About</a><a href="winners.html">Winners</a><a href="events.html">Events</a><a href="media.html">Media</a></div>
+      <div class="footer__cols"><h5>The 18th</h5><a href="#tickets">Get Tickets</a><a href="travel.html">Book Travel</a><a href="#">Become a Partner</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="copyright">© 2026 The Headies. Africa to the World.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.5a3 3 0 0 0-2.11-2.12C19.5 3.86 12 3.86 12 3.86s-7.5 0-9.39.52A3 3 0 0 0 .5 6.5 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.5 3 3 0 0 0 2.11 2.12c1.89.52 9.39.52 9.39.52s7.5 0 9.39-.52a3 3 0 0 0 2.11-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.5ZM9.6 15.57V8.43L15.82 12 9.6 15.57Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="image-slot.js"></script>
+<script src="headies.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

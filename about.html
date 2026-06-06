@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="gold">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · The Headies</title>
+<link rel="stylesheet" href="headies.css">
+<style>
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .story__media{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-gold)}
+  .story__media image-slot,.story__media .ph{position:absolute;inset:0;height:100%}
+  @media(max-width:860px){.story{grid-template-columns:1fr;gap:32px}}
+  .pull{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3.2vw,2.8rem);line-height:1.18;
+    text-align:center;max-width:24ch;margin:0 auto;letter-spacing:-.01em}
+  .pull .gold-text{font-style:italic}
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .value{padding:34px 28px;border:1px solid var(--line-gold);border-radius:var(--r-lg);background:var(--bg-card)}
+  .value__ic{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(212,175,55,.12);color:var(--gold);margin-bottom:20px}
+  .value__ic .icon{width:24px;height:24px}
+  .value h3{font-size:1.3rem;margin-bottom:10px}
+  @media(max-width:860px){.values{grid-template-columns:1fr}}
+  .cta-band{position:relative;text-align:center;padding:clamp(56px,8vw,110px) 0;overflow:hidden;
+    background:radial-gradient(110% 130% at 50% 0%,rgba(212,175,55,.16),transparent 55%),var(--ink-850);
+    border-top:1px solid var(--line-gold);border-bottom:1px solid var(--line-gold)}
+</style>
+</head>
+<body data-theme="dark">
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="container container-wide nav__inner">
+    <a class="brand" href="index.html" aria-label="The Headies home"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="winners.html">Winners</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="travel.html">Travel</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="events.html" class="btn btn-gold">Get Tickets</a>
+      <button class="nav__burger" aria-label="Open menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="drawer">
+  <button class="drawer__close" aria-label="Close menu"><i data-lucide="x"></i></button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="winners.html">Winners</a>
+  <a href="events.html">Events</a><a href="media.html">Media</a><a href="travel.html">Book Travel</a>
+</div>
+
+<!-- PAGE HEAD -->
+<header class="pagehead" data-screen-label="About header">
+  <div class="container">
+    <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; About</p>
+    <p class="eyebrow">Africa's biggest and most prestigious award</p>
+    <h1 class="h1">The night that crowned <span class="gold-text">a generation</span></h1>
+    <p class="lead">Since 2006, The Headies has stood as the definitive honour in African music — the stage where the sound of a continent became the soundtrack of the world.</p>
+  </div>
+</header>
+
+<!-- STORY -->
+<section class="section" data-screen-label="Story">
+  <div class="container">
+    <div class="story">
+      <div class="story__media reveal">
+        <image-slot id="about-1" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1100&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop an iconic stage / trophy photo"></image-slot>
+        <div class="ph media-fill" style="z-index:-1"></div>
+      </div>
+      <div class="reveal" data-d="1">
+        <p class="eyebrow">Our story</p>
+        <h2 class="h2" style="margin:14px 0 22px">From a Lagos dream to a global icon</h2>
+        <p class="muted" style="margin-bottom:18px">The Headies began in 2006 as the Hip Hop World Awards — the first platform built to honour Nigerian music on its own terms, by its own people. It was a statement: that the artistry pouring out of Lagos studios deserved a stage as serious as the talent on it.</p>
+        <p class="muted" style="margin-bottom:18px">In the years since, it took the name the world now knows — The Headies — and grew into the most coveted recognition an African artist can receive. Its golden statuette has been lifted by the names that now headline arenas from London to New York.</p>
+        <p class="muted">In 2022 the show crossed the Atlantic for the first time, staged in Atlanta. In 2025 it came roaring home for <em>Back to Base</em>. And in 2026, it takes its boldest leap yet — <strong>to Canada</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="section--tight section" data-screen-label="Mission">
+  <div class="container">
+    <p class="pull reveal">"We don't just hand out awards. We document the rise of a culture — and carry <span class="gold-text">Africa to the World</span>."</p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section section--ink" data-screen-label="Values">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">What we stand for</p>
+        <h2 class="h2" style="margin-top:14px">Excellence, culture, legacy</h2>
+      </div>
+    </div>
+    <div class="values">
+      <div class="value reveal" data-d="1">
+        <div class="value__ic"><i data-lucide="award" class="icon"></i></div>
+        <h3>Honouring excellence</h3>
+        <p class="muted" style="font-size:.96rem">Across 40+ categories, we celebrate the artistry, craft and innovation that define African music's finest year after year.</p>
+      </div>
+      <div class="value reveal" data-d="2">
+        <div class="value__ic"><i data-lucide="globe" class="icon"></i></div>
+        <h3>Carrying culture</h3>
+        <p class="muted" style="font-size:.96rem">From Afrobeats to highlife, hip-hop to gospel, The Headies is a living archive of the sound and spirit of a continent.</p>
+      </div>
+      <div class="value reveal" data-d="3">
+        <div class="value__ic"><i data-lucide="sparkles" class="icon"></i></div>
+        <h3>Building legacy</h3>
+        <p class="muted" style="font-size:.96rem">Our Next Rated award has launched superstars. The night you win a Headie is the night the world starts watching.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section" data-screen-label="About stats">
+  <div class="container">
+    <div class="stats reveal">
+      <div class="stat"><div class="stat__num"><span data-count="18">18</span></div><div class="stat__label">Editions</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="20">20</span></div><div class="stat__label">Years of legacy</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="40" data-suffix="+">40+</span></div><div class="stat__label">Award categories</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="3">3</span></div><div class="stat__label">Continents staged</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" data-screen-label="About CTA">
+  <div class="container">
+    <p class="eyebrow eyebrow--center reveal">The 18th Headies · 2026</p>
+    <h2 class="h1 reveal" data-d="1" style="margin:16px 0 22px">Be part of the next chapter</h2>
+    <div class="reveal" data-d="2" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="events.html" class="btn btn-gold btn-lg">Get Tickets</a>
+      <a href="travel.html" class="btn btn-outline btn-lg">Plan your trip to Canada</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container container-wide">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="index.html"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+        <p class="muted" style="max-width:38ch;font-size:.95rem">Africa's biggest and most prestigious music award — celebrating the best in Afrobeats, African music, global sound and culture since 2006.</p>
+      </div>
+      <div class="footer__cols"><h5>Explore</h5><a href="about.html">About</a><a href="winners.html">Winners</a><a href="events.html">Events</a><a href="media.html">Media</a></div>
+      <div class="footer__cols"><h5>The 18th</h5><a href="events.html">Get Tickets</a><a href="travel.html">Book Travel</a><a href="#">Become a Partner</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="copyright">© 2026 The Headies. Africa to the World.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.5a3 3 0 0 0-2.11-2.12C19.5 3.86 12 3.86 12 3.86s-7.5 0-9.39.52A3 3 0 0 0 .5 6.5 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.5 3 3 0 0 0 2.11 2.12c1.89.52 9.39.52 9.39.52s7.5 0 9.39-.52a3 3 0 0 0 2.11-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.5ZM9.6 15.57V8.43L15.82 12 9.6 15.57Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="image-slot.js"></script>
+<script src="headies.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Local design-handoff source bundle (reference only — not part of the deployed site)
+Headies_extracted/
+
+# Local dev server helper (hardcoded absolute path; not needed on Vercel)
+serve.py
+
+# Editor / tooling
+.claude/
+.vscode/
+.idea/
+
+# OS / logs
+.DS_Store
+*.log

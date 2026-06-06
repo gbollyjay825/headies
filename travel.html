@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="gold">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Travel · The Headies × Wakanow</title>
+<link rel="stylesheet" href="headies.css">
+<style>
+  .wkmark{font-family:var(--font-display);font-weight:800;font-size:1.4rem;letter-spacing:.01em;color:var(--cream)}
+  .partner-lockup{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+  /* booking widget — Headies dark/gold */
+  .booker{background:var(--ink-800);border:1px solid var(--line-gold);border-radius:var(--r-lg);padding:10px;box-shadow:var(--shadow-lift);color:var(--cream)}
+  .booker__tabs{display:flex;gap:4px;padding:6px 6px 0}
+  .btab{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:0;background:transparent;border-radius:var(--r) var(--r) 0 0;
+    font-family:var(--font-body);font-weight:700;font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cream-dim);cursor:pointer;transition:all .2s}
+  .btab .icon{width:18px;height:18px}
+  .btab.active{background:rgba(212,175,55,.12);color:var(--gold)}
+  .booker__form{background:rgba(8,8,10,.45);border:1px solid var(--line-soft);border-radius:var(--r);padding:18px;display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr auto;gap:12px;align-items:end}
+  .bfield{display:flex;flex-direction:column;gap:6px;text-align:left}
+  .bfield label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .bfield .ctl{background:var(--ink-850);border:1px solid var(--line-gold);border-radius:var(--r-sm);padding:13px 14px;font-family:inherit;font-size:.96rem;color:var(--cream);display:flex;align-items:center;gap:8px}
+  .bfield .ctl .icon{width:16px;height:16px;color:var(--gold);flex-shrink:0}
+  .bfield .ctl input{border:0;outline:0;font-family:inherit;font-size:.96rem;width:100%;background:transparent;color:var(--cream)}
+  .bfield .ctl strong{font-weight:700}.bfield .ctl small{color:var(--cream-faint);font-size:.78rem}
+  .bsearch{background:var(--gold-foil);color:#1c1402;border:0;border-radius:var(--r-sm);padding:0 26px;height:50px;
+    font-family:var(--font-body);font-weight:800;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(212,175,55,.25)}
+  .bsearch:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,175,55,.4)}
+  .bsearch .icon{width:18px;height:18px}
+  @media(max-width:980px){.booker__form{grid-template-columns:1fr 1fr}.bsearch{grid-column:1/-1;height:52px;justify-content:center}}
+  @media(max-width:560px){.booker__form{grid-template-columns:1fr}}
+
+  .pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:980px){.pkgs{grid-template-columns:1fr}}
+  .pkg{border:1px solid var(--line-gold);border-radius:var(--r-lg);overflow:hidden;background:var(--bg-card);
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .pkg:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+  .pkg__media{position:relative;aspect-ratio:16/10}
+  .pkg__media image-slot,.pkg__media .ph{position:absolute;inset:0;height:100%}
+  .pkg__city{position:absolute;left:18px;bottom:14px;z-index:2;font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--cream)}
+  .pkg__body{padding:24px}
+  .pkg__row{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--fg-dim);margin-bottom:8px}
+  .pkg__row .icon{width:16px;height:16px;color:var(--gold)}
+  .pkg__price{font-family:var(--font-display);font-weight:800;font-size:2rem;margin:14px 0 2px}
+  .pss{display:inline-flex;align-items:center;gap:7px;background:rgba(212,175,55,.14);color:var(--gold);
+    border:1px solid var(--line-gold);border-radius:var(--r-pill);padding:5px 12px;font-size:.72rem;font-weight:800;letter-spacing:.04em;margin-top:10px}
+  .pss .icon{width:14px;height:14px}
+
+  .why{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  @media(max-width:860px){.why{grid-template-columns:1fr 1fr}}
+  .whyitem{text-align:left}
+  .whyitem .icon{width:30px;height:30px;color:var(--gold);margin-bottom:14px}
+  .whyitem h4{font-size:1.05rem;margin-bottom:6px}
+</style>
+</head>
+<body data-theme="dark">
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="container container-wide nav__inner">
+    <a class="brand" href="index.html" aria-label="The Headies home"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="winners.html">Winners</a></li><li><a href="events.html">Events</a></li>
+      <li><a href="media.html">Media</a></li><li><a href="travel.html" aria-current="page">Travel</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="events.html" class="btn btn-gold">Get Tickets</a>
+      <button class="nav__burger" aria-label="Open menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="drawer">
+  <button class="drawer__close" aria-label="Close menu"><i data-lucide="x"></i></button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="winners.html">Winners</a>
+  <a href="events.html">Events</a><a href="media.html">Media</a><a href="travel.html">Book Travel</a>
+</div>
+
+<header class="pagehead" data-screen-label="Travel header">
+  <div class="container">
+    <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Book Travel</p>
+    <div class="partner-lockup reveal" style="margin-bottom:18px">
+      <span class="eyebrow" style="margin:0">Official Travel Partner</span>
+      <span class="wkmark">Wakanow</span>
+    </div>
+    <h1 class="h1">Get to the night, <span class="gold-text">stress-free</span></h1>
+    <p class="lead">Flights, hotels and airport transfers to Canada for the 18th Headies — booked seamlessly with Wakanow, with Pay Small Small installments so you never miss a beat.</p>
+  </div>
+</header>
+
+<!-- BOOKING WIDGET -->
+<section class="section section--tight" data-screen-label="Booking widget">
+  <div class="container">
+    <div class="booker reveal">
+      <div class="booker__tabs">
+        <button class="btab active" data-bt="flights"><i data-lucide="plane" class="icon"></i> Flights</button>
+        <button class="btab" data-bt="stays"><i data-lucide="building-2" class="icon"></i> Stays</button>
+        <button class="btab" data-bt="packages"><i data-lucide="luggage" class="icon"></i> Flight + Hotel</button>
+      </div>
+      <div class="booker__form">
+        <div class="bfield"><label>From</label><div class="ctl"><i data-lucide="plane-takeoff" class="icon"></i><div><strong>Lagos</strong> <small>LOS</small></div></div></div>
+        <div class="bfield"><label>To</label><div class="ctl"><i data-lucide="plane-landing" class="icon"></i><div><strong>Toronto</strong> <small>YYZ</small></div></div></div>
+        <div class="bfield"><label>Dates</label><div class="ctl"><i data-lucide="calendar" class="icon"></i><input type="text" value="Jul 2026" aria-label="Travel dates"></div></div>
+        <div class="bfield"><label>Travellers</label><div class="ctl"><i data-lucide="users" class="icon"></i><input type="text" value="1 Adult" aria-label="Travellers"></div></div>
+        <button class="bsearch"><i data-lucide="search" class="icon"></i> Search</button>
+      </div>
+    </div>
+    <p class="center muted" style="margin-top:16px;font-size:.84rem">Indicative search — real availability via our partner at booking.</p>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section" data-screen-label="Packages">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title"><p class="eyebrow">Headies travel packages</p><h2 class="h2" style="margin-top:14px">Fly in for the weekend</h2></div>
+      <p class="lead">Curated flight + hotel bundles built around Awards Night. Indicative pricing in CAD, per person.</p>
+    </div>
+    <div class="pkgs">
+      <article class="pkg reveal" data-d="1">
+        <div class="pkg__media"><image-slot id="pk1" src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a Toronto skyline photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">Toronto</div></div>
+        <div class="pkg__body">
+          <div class="pkg__row"><i data-lucide="plane" class="icon"></i> Return flights + 4 nights</div>
+          <div class="pkg__row"><i data-lucide="star" class="icon"></i> 4★ downtown hotel</div>
+          <div class="pkg__price">$1,850 <span style="font-size:.9rem;font-weight:600;color:var(--fg-faint)">/ person</span></div>
+          <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
+          <a href="#" class="btn btn-gold" style="width:100%;margin-top:20px">View package</a>
+        </div>
+      </article>
+      <article class="pkg reveal" data-d="2">
+        <div class="pkg__media"><image-slot id="pk2" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a city photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">+ Red Carpet</div></div>
+        <div class="pkg__body">
+          <div class="pkg__row"><i data-lucide="plane" class="icon"></i> Return flights + 4 nights</div>
+          <div class="pkg__row"><i data-lucide="ticket" class="icon"></i> Premium event ticket included</div>
+          <div class="pkg__price">$2,490 <span style="font-size:.9rem;font-weight:600;color:var(--fg-faint)">/ person</span></div>
+          <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
+          <a href="#" class="btn btn-gold" style="width:100%;margin-top:20px">View package</a>
+        </div>
+      </article>
+      <article class="pkg reveal" data-d="3">
+        <div class="pkg__media"><image-slot id="pk3" src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a luxury hotel photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">VIP Weekend</div></div>
+        <div class="pkg__body">
+          <div class="pkg__row"><i data-lucide="plane" class="icon"></i> Business-class + 5 nights</div>
+          <div class="pkg__row"><i data-lucide="crown" class="icon"></i> 5★ suite + VIP ticket + transfers</div>
+          <div class="pkg__price">$5,900 <span style="font-size:.9rem;font-weight:600;color:var(--fg-faint)">/ person</span></div>
+          <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
+          <a href="#" class="btn btn-gold" style="width:100%;margin-top:20px">View package</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WAKANOW -->
+<section class="section section--ink" data-screen-label="Why Wakanow">
+  <div class="container">
+    <div class="shead reveal">
+      <div class="shead__title">
+        <p class="eyebrow">Why book with Wakanow</p>
+        <h2 class="h2" style="margin-top:14px">Africa's leading travel company</h2>
+      </div>
+    </div>
+    <div class="why">
+      <div class="whyitem reveal" data-d="1"><i data-lucide="badge-check" class="icon"></i><h4>No hidden fees</h4><p class="muted" style="font-size:.92rem">Transparent pricing — the fare you see is the fare you pay.</p></div>
+      <div class="whyitem reveal" data-d="2"><i data-lucide="credit-card" class="icon"></i><h4>Pay Small Small</h4><p class="muted" style="font-size:.92rem">Lock in your trip now and pay in convenient installments.</p></div>
+      <div class="whyitem reveal" data-d="3"><i data-lucide="headphones" class="icon"></i><h4>24/7 support</h4><p class="muted" style="font-size:.92rem">Real people, around the clock, from booking to landing.</p></div>
+      <div class="whyitem reveal" data-d="4"><i data-lucide="shield-check" class="icon"></i><h4>Trusted since 2008</h4><p class="muted" style="font-size:.92rem">Millions of journeys booked across Africa and beyond.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section center" data-screen-label="Travel CTA">
+  <div class="container">
+    <p class="eyebrow eyebrow--center reveal">Got your seat? Now get your flight</p>
+    <h2 class="h2 reveal" data-d="1" style="margin:16px auto 22px;max-width:20ch">See you in Canada</h2>
+    <div class="reveal" data-d="2" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn-gold btn-lg">Start booking</a>
+      <a href="events.html" class="btn btn-outline btn-lg">Get event tickets</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container container-wide">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="index.html"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
+        <p class="muted" style="max-width:38ch;font-size:.95rem">Africa's biggest and most prestigious music award — celebrating the best in Afrobeats, African music, global sound and culture since 2006.</p>
+        <p class="muted" style="font-size:.82rem;margin-top:14px">Travel partner: <span class="wkmark" style="font-size:1rem">Wakanow</span></p>
+      </div>
+      <div class="footer__cols"><h5>Explore</h5><a href="about.html">About</a><a href="winners.html">Winners</a><a href="events.html">Events</a><a href="media.html">Media</a></div>
+      <div class="footer__cols"><h5>The 18th</h5><a href="events.html">Get Tickets</a><a href="travel.html">Book Travel</a><a href="#">Become a Partner</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="copyright">© 2026 The Headies. Africa to the World.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.5a3 3 0 0 0-2.11-2.12C19.5 3.86 12 3.86 12 3.86s-7.5 0-9.39.52A3 3 0 0 0 .5 6.5 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.5 3 3 0 0 0 2.11 2.12c1.89.52 9.39.52 9.39.52s7.5 0 9.39-.52a3 3 0 0 0 2.11-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.5ZM9.6 15.57V8.43L15.82 12 9.6 15.57Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="image-slot.js"></script>
+<script src="headies.js"></script>
+<script>
+  lucide.createIcons();
+  document.querySelectorAll('.btab').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.btab').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
