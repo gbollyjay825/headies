@@ -1,0 +1,6 @@
+# Keep the Vercel deployment to just the static site
+Headies_extracted/
+serve.py
+.claude/
+*.log
+.DS_Store
