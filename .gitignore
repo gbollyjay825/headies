@@ -12,3 +12,5 @@ serve.py
 # OS / logs
 .DS_Store
 *.log
+.vercel
+.env*
