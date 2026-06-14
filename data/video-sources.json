@@ -1,0 +1,62 @@
+{
+  "updatedAt": "2026-06-14",
+  "source": "Video links extracted from the 16th and 17th Headies decks",
+  "videos": [
+    {
+      "id": "the-16th-headies",
+      "title": "The 16th Headies",
+      "tag": "Full Show",
+      "youtubeId": "Y737YQOYFeQ",
+      "year": 2023
+    },
+    {
+      "id": "the-15th-headies-awards",
+      "title": "The 15th Headies Awards",
+      "tag": "Archive",
+      "youtubeId": "_IDdka12UGQ",
+      "year": 2022
+    },
+    {
+      "id": "the-15th-headies-red-carpet",
+      "title": "The 15th Headies Red Carpet",
+      "tag": "Red Carpet",
+      "youtubeId": "n96fL5kqwcg",
+      "year": 2022
+    },
+    {
+      "id": "the-headies-brunch",
+      "title": "The Headies Brunch",
+      "tag": "Brunch",
+      "youtubeId": "QQl4c6CSiCg",
+      "year": 2023
+    },
+    {
+      "id": "next-rated-car-presentation",
+      "title": "The Headies Next Rated Car Presentation",
+      "tag": "Next Rated",
+      "youtubeId": "QpWqfmLrOHA",
+      "year": 2023
+    },
+    {
+      "id": "us-reception-honour-headies",
+      "title": "The US Reception in Honour of The Headies",
+      "tag": "Partners",
+      "youtubeId": "_aBDfBJ6ouw",
+      "year": 2023
+    },
+    {
+      "id": "lagos-constellation-stars",
+      "title": "The Lagos State Constellation of Stars",
+      "tag": "Culture",
+      "youtubeId": "b1CO0gSU-5U",
+      "year": 2023
+    },
+    {
+      "id": "nominees-photoshoot",
+      "title": "The Headies Nominees Photoshoot",
+      "tag": "Nominees",
+      "youtubeId": "juniHectpMs",
+      "year": 2023
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# The 18th Headies — "Africa to the World"
+# The 18th Headies - "Africa to the World"
 
 A multi-page marketing & event site for **The Headies** (Africa's biggest and most
 prestigious music awards) celebrating its **18th edition**, hosted in **Canada, 2026**,
@@ -21,16 +21,16 @@ interactive history timeline. Built as a static HTML / CSS / vanilla-JS site.
 
 ## Structure
 
-- `headies.css` — the design system: all tokens (gold/ink palette, type scale, radii,
+- `headies.css` - the design system: all tokens (gold/ink palette, type scale, radii,
   shadows), components, and responsive rules.
-- `headies.js` — shared interactions: sticky nav, reveal-on-scroll, count-up stats,
+- `headies.js` - shared interactions: sticky nav, reveal-on-scroll, count-up stats,
   countdown, gallery lightbox, carousel, timeline drag-scroll.
-- `image-slot.js` — `<image-slot>` custom element used for the photography.
-- `assets/` — the official logo. Photography uses remote stock placeholders.
+- `image-slot.js` - `<image-slot>` custom element used for the photography.
+- `assets/` - the official logo. Photography uses remote stock placeholders.
 
 ## Run locally
 
-It's a static site — open `index.html` directly, or serve the folder:
+It's a static site - open `index.html` directly, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
@@ -39,7 +39,7 @@ python3 -m http.server 8000
 
 ## Notes
 
-Photos are placeholders and the host city / ticket prices are indicative — replace with
+Photos are placeholders and the host city / ticket prices are indicative - replace with
 the client's real event photography, venue, dates, and pricing before launch.
 
 © 2026 The Headies. Africa to the World.

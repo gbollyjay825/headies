@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Travel · The Headies × Wakanow</title>
+<title>Travel Access · The Headies × Wakanow</title>
 <link rel="stylesheet" href="headies.css">
 <style>
   .wkmark{font-family:var(--font-display);font-weight:800;font-size:1.4rem;letter-spacing:.01em;color:var(--cream)}
   .partner-lockup{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 
-  /* booking widget — Headies dark/gold */
+  /* legacy booking widget styles kept unused while partner booking is offline */
   .booker{background:var(--ink-800);border:1px solid var(--line-gold);border-radius:var(--r-lg);padding:10px;box-shadow:var(--shadow-lift);color:var(--cream)}
   .booker__tabs{display:flex;gap:4px;padding:6px 6px 0}
   .btab{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:0;background:transparent;border-radius:var(--r) var(--r) 0 0;
@@ -42,7 +42,6 @@
   .pkg__body{padding:24px}
   .pkg__row{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--fg-dim);margin-bottom:8px}
   .pkg__row .icon{width:16px;height:16px;color:var(--gold)}
-  .pkg__price{font-family:var(--font-display);font-weight:800;font-size:2rem;margin:14px 0 2px}
   .pss{display:inline-flex;align-items:center;gap:7px;background:rgba(212,175,55,.14);color:var(--gold);
     border:1px solid var(--line-gold);border-radius:var(--r-pill);padding:5px 12px;font-size:.72rem;font-weight:800;letter-spacing:.04em;margin-top:10px}
   .pss .icon{width:14px;height:14px}
@@ -74,39 +73,41 @@
 <div class="drawer">
   <button class="drawer__close" aria-label="Close menu"><i data-lucide="x"></i></button>
   <a href="index.html">Home</a><a href="about.html">About</a><a href="winners.html">Winners</a>
-  <a href="events.html">Events</a><a href="media.html">Media</a><a href="travel.html">Book Travel</a>
+  <a href="events.html">Events</a><a href="media.html">Media</a><a href="travel.html">Travel Access</a>
 </div>
 
 <header class="pagehead" data-screen-label="Travel header">
   <div class="container">
-    <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Book Travel</p>
+    <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Travel Access</p>
     <div class="partner-lockup reveal" style="margin-bottom:18px">
       <span class="eyebrow" style="margin:0">Official Travel Partner</span>
       <span class="wkmark">Wakanow</span>
     </div>
-    <h1 class="h1">Get to the night, <span class="gold-text">stress-free</span></h1>
-    <p class="lead">Flights, hotels and airport transfers to Canada for the 18th Headies — booked seamlessly with Wakanow, with Pay Small Small installments so you never miss a beat.</p>
+    <h1 class="h1">Get early access to <span class="gold-text">package deals</span></h1>
+    <p class="lead">Flights, hotels and airport-transfer packages for Canada are being finalized with Wakanow. Join the early-access list and we will share partner deals as soon as they open.</p>
   </div>
 </header>
 
-<!-- BOOKING WIDGET -->
-<section class="section section--tight" data-screen-label="Booking widget">
+<!-- EARLY ACCESS -->
+<section class="section section--tight" id="early-access" data-screen-label="Travel early access">
   <div class="container">
-    <div class="booker reveal">
-      <div class="booker__tabs">
-        <button class="btab active" data-bt="flights"><i data-lucide="plane" class="icon"></i> Flights</button>
-        <button class="btab" data-bt="stays"><i data-lucide="building-2" class="icon"></i> Stays</button>
-        <button class="btab" data-bt="packages"><i data-lucide="luggage" class="icon"></i> Flight + Hotel</button>
+    <div class="lead-form lead-form--panel reveal">
+      <div class="shead" style="margin-bottom:20px">
+        <div class="shead__title"><p class="eyebrow">Travel early access</p><h2 class="h2" style="margin-top:14px">Be first to see the package deals</h2></div>
+        <p class="lead">Share your details and we will notify you when Canada travel packages, hotel blocks and partner offers are ready.</p>
       </div>
-      <div class="booker__form">
-        <div class="bfield"><label>From</label><div class="ctl"><i data-lucide="plane-takeoff" class="icon"></i><div><strong>Lagos</strong> <small>LOS</small></div></div></div>
-        <div class="bfield"><label>To</label><div class="ctl"><i data-lucide="plane-landing" class="icon"></i><div><strong>Toronto</strong> <small>YYZ</small></div></div></div>
-        <div class="bfield"><label>Dates</label><div class="ctl"><i data-lucide="calendar" class="icon"></i><input type="text" value="Jul 2026" aria-label="Travel dates"></div></div>
-        <div class="bfield"><label>Travellers</label><div class="ctl"><i data-lucide="users" class="icon"></i><input type="text" value="1 Adult" aria-label="Travellers"></div></div>
-        <button class="bsearch"><i data-lucide="search" class="icon"></i> Search</button>
-      </div>
+      <form class="lead-form" data-early-access-form>
+        <div class="lead-form__grid">
+          <label>Name <input name="name" type="text" autocomplete="name" placeholder="Full name" required></label>
+          <label>Email <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Phone <input name="phone" type="tel" autocomplete="tel" placeholder="+234..." required></label>
+        </div>
+        <div class="lead-form__actions">
+          <button class="btn btn-gold" type="submit">Get early access</button>
+          <p class="lead-form__status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
-    <p class="center muted" style="margin-top:16px;font-size:.84rem">Indicative search — real availability via our partner at booking.</p>
   </div>
 </section>
 
@@ -115,37 +116,34 @@
   <div class="container">
     <div class="shead reveal">
       <div class="shead__title"><p class="eyebrow">Headies travel packages</p><h2 class="h2" style="margin-top:14px">Fly in for the weekend</h2></div>
-      <p class="lead">Curated flight + hotel bundles built around Awards Night. Indicative pricing in CAD, per person.</p>
+      <p class="lead">Curated flight, hotel, ticket and transfer options built around Awards Night. Package details will be released to early-access signups first.</p>
     </div>
     <div class="pkgs">
       <article class="pkg reveal" data-d="1">
-        <div class="pkg__media"><image-slot id="pk1" src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a Toronto skyline photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">Toronto</div></div>
+        <div class="pkg__media"><image-slot id="pk1" src="https://lh3.googleusercontent.com/d/1pywlnGUzVyn8pf0SXmNBCmRuswBobRDQ=w1100" class="media-fill" placeholder="Drop a Toronto skyline photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">Toronto</div></div>
         <div class="pkg__body">
           <div class="pkg__row"><i data-lucide="plane" class="icon"></i> Return flights + 4 nights</div>
           <div class="pkg__row"><i data-lucide="star" class="icon"></i> 4★ downtown hotel</div>
-          <div class="pkg__price">$1,850 <span style="font-size:.9rem;font-weight:600;color:var(--fg-faint)">/ person</span></div>
           <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
-          <a href="#" class="btn btn-gold" style="width:100%;margin-top:20px">View package</a>
+          <a href="#early-access" class="btn btn-gold" style="width:100%;margin-top:20px">Get early access</a>
         </div>
       </article>
       <article class="pkg reveal" data-d="2">
-        <div class="pkg__media"><image-slot id="pk2" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a city photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">+ Red Carpet</div></div>
+        <div class="pkg__media"><image-slot id="pk2" src="https://lh3.googleusercontent.com/d/1QD_gCNxfqKWiivSlV1TP5ygXeO5JvlMs=w1100" class="media-fill" placeholder="Drop a city photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">+ Red Carpet</div></div>
         <div class="pkg__body">
           <div class="pkg__row"><i data-lucide="plane" class="icon"></i> Return flights + 4 nights</div>
           <div class="pkg__row"><i data-lucide="ticket" class="icon"></i> Premium event ticket included</div>
-          <div class="pkg__price">$2,490 <span style="font-size:.9rem;font-weight:600;color:var(--fg-faint)">/ person</span></div>
           <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
-          <a href="#" class="btn btn-gold" style="width:100%;margin-top:20px">View package</a>
+          <a href="#early-access" class="btn btn-gold" style="width:100%;margin-top:20px">Get early access</a>
         </div>
       </article>
       <article class="pkg reveal" data-d="3">
-        <div class="pkg__media"><image-slot id="pk3" src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=900&q=80&auto=format&fit=crop" class="media-fill" placeholder="Drop a luxury hotel photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">VIP Weekend</div></div>
+        <div class="pkg__media"><image-slot id="pk3" src="https://lh3.googleusercontent.com/d/1kEppr0AuFpulAiHYWzvUB0Zscd_cbk9z=w1100" class="media-fill" placeholder="Drop a luxury hotel photo"></image-slot><div class="ph media-fill" style="z-index:-1"></div><div class="legend__grad"></div><div class="pkg__city">VIP Weekend</div></div>
         <div class="pkg__body">
           <div class="pkg__row"><i data-lucide="plane" class="icon"></i> Business-class + 5 nights</div>
           <div class="pkg__row"><i data-lucide="crown" class="icon"></i> 5★ suite + VIP ticket + transfers</div>
-          <div class="pkg__price">$5,900 <span style="font-size:.9rem;font-weight:600;color:var(--fg-faint)">/ person</span></div>
           <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
-          <a href="#" class="btn btn-gold" style="width:100%;margin-top:20px">View package</a>
+          <a href="#early-access" class="btn btn-gold" style="width:100%;margin-top:20px">Get early access</a>
         </div>
       </article>
     </div>
@@ -162,7 +160,7 @@
       </div>
     </div>
     <div class="why">
-      <div class="whyitem reveal" data-d="1"><i data-lucide="badge-check" class="icon"></i><h4>No hidden fees</h4><p class="muted" style="font-size:.92rem">Transparent pricing — the fare you see is the fare you pay.</p></div>
+      <div class="whyitem reveal" data-d="1"><i data-lucide="badge-check" class="icon"></i><h4>No hidden fees</h4><p class="muted" style="font-size:.92rem">Transparent pricing - the fare you see is the fare you pay.</p></div>
       <div class="whyitem reveal" data-d="2"><i data-lucide="credit-card" class="icon"></i><h4>Pay Small Small</h4><p class="muted" style="font-size:.92rem">Lock in your trip now and pay in convenient installments.</p></div>
       <div class="whyitem reveal" data-d="3"><i data-lucide="headphones" class="icon"></i><h4>24/7 support</h4><p class="muted" style="font-size:.92rem">Real people, around the clock, from booking to landing.</p></div>
       <div class="whyitem reveal" data-d="4"><i data-lucide="shield-check" class="icon"></i><h4>Trusted since 2008</h4><p class="muted" style="font-size:.92rem">Millions of journeys booked across Africa and beyond.</p></div>
@@ -173,10 +171,10 @@
 <!-- CTA -->
 <section class="section center" data-screen-label="Travel CTA">
   <div class="container">
-    <p class="eyebrow eyebrow--center reveal">Got your seat? Now get your flight</p>
-    <h2 class="h2 reveal" data-d="1" style="margin:16px auto 22px;max-width:20ch">See you in Canada</h2>
+    <p class="eyebrow eyebrow--center reveal">Canada travel list</p>
+    <h2 class="h2 reveal" data-d="1" style="margin:16px auto 22px;max-width:20ch">Get the package deals first</h2>
     <div class="reveal" data-d="2" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="#" class="btn btn-gold btn-lg">Start booking</a>
+      <a href="#early-access" class="btn btn-gold btn-lg">Get early access</a>
       <a href="events.html" class="btn btn-outline btn-lg">Get event tickets</a>
     </div>
   </div>
@@ -187,11 +185,11 @@
     <div class="footer__top">
       <div>
         <a class="brand" href="index.html"><img class="brand__logo" src="assets/headies-logo.png" alt="The Headies"></a>
-        <p class="muted" style="max-width:38ch;font-size:.95rem">Africa's biggest and most prestigious music award — celebrating the best in Afrobeats, African music, global sound and culture since 2006.</p>
+        <p class="muted" style="max-width:38ch;font-size:.95rem">Africa's biggest and most prestigious music award - celebrating the best in Afrobeats, African music, global sound and culture since 2006.</p>
         <p class="muted" style="font-size:.82rem;margin-top:14px">Travel partner: <span class="wkmark" style="font-size:1rem">Wakanow</span></p>
       </div>
       <div class="footer__cols"><h5>Explore</h5><a href="about.html">About</a><a href="winners.html">Winners</a><a href="events.html">Events</a><a href="media.html">Media</a></div>
-      <div class="footer__cols"><h5>The 18th</h5><a href="events.html">Get Tickets</a><a href="travel.html">Book Travel</a><a href="#">Become a Partner</a><a href="#">Contact</a></div>
+      <div class="footer__cols"><h5>The 18th</h5><a href="events.html">Get Tickets</a><a href="travel.html">Travel Access</a><a href="#">Become a Partner</a><a href="#">Contact</a></div>
     </div>
     <div class="footer__bottom">
       <p class="copyright">© 2026 The Headies. Africa to the World.</p>
@@ -207,15 +205,9 @@
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="image-slot.js"></script>
-<script src="headies.js"></script>
+<script src="headies.js?v=20260614-video-fix"></script>
 <script>
   lucide.createIcons();
-  document.querySelectorAll('.btab').forEach(function(b){
-    b.addEventListener('click',function(){
-      document.querySelectorAll('.btab').forEach(function(x){x.classList.remove('active');});
-      b.classList.add('active');
-    });
-  });
 </script>
 </body>
 </html>
