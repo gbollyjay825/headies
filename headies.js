@@ -231,6 +231,37 @@
         form.reset();
       });
     });
+    document.querySelectorAll('[data-white-glove-form]').forEach(function(form){
+      var status=form.querySelector('[role="status"]');
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        if(!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+        var services=Array.prototype.slice.call(form.querySelectorAll('input[name="services"]:checked')).map(function(input){return input.value;});
+        if(!services.length){
+          if(status)status.textContent='Select at least one white glove service.';
+          return;
+        }
+        var request={
+          name:form.elements.name ? form.elements.name.value.trim() : '',
+          email:form.elements.email ? form.elements.email.value.trim() : '',
+          phone:form.elements.phone ? form.elements.phone.value.trim() : '',
+          services:services,
+          notes:form.elements.notes ? form.elements.notes.value.trim() : '',
+          source:location.pathname,
+          createdAt:new Date().toISOString()
+        };
+        try{
+          var requests=JSON.parse(localStorage.getItem('headiesWhiteGloveRequests')||'[]');
+          requests.push(request);
+          localStorage.setItem('headiesWhiteGloveRequests',JSON.stringify(requests.slice(-50)));
+        }catch(err){}
+        if(status)status.textContent='White glove request received. A travel concierge will follow up with next steps.';
+        form.reset();
+      });
+    });
   }
 
   function boot(){ initNav();initReveal();initCountUp();initCountdown();initLightbox();initCarousel();initTimelineDrag();initEarlyAccess(); }

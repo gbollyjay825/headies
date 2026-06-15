@@ -51,6 +51,23 @@
   .whyitem{text-align:left}
   .whyitem .icon{width:30px;height:30px;color:var(--gold);margin-bottom:14px}
   .whyitem h4{font-size:1.05rem;margin-bottom:6px}
+
+  .concierge{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:start}
+  .concierge__intro{position:sticky;top:calc(var(--nav-h) + 24px)}
+  .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:26px}
+  .service-card{border:1px solid var(--line-gold);border-radius:var(--r);background:var(--bg-card);padding:22px;min-height:178px}
+  .service-card .icon{width:28px;height:28px;color:var(--gold);margin-bottom:18px}
+  .service-card h3{font-size:1.22rem;margin-bottom:8px}
+  .service-card p{font-size:.92rem;color:var(--fg-dim)}
+  .service-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .service-option{display:flex;align-items:center;gap:10px;border:1px solid var(--line-gold);border-radius:var(--r-sm);
+    background:rgba(8,8,10,.38);padding:13px 14px;color:var(--cream);font-size:.9rem;letter-spacing:0;text-transform:none}
+  .service-option input{width:18px;height:18px;accent-color:var(--gold)}
+  .lead-form textarea{width:100%;min-height:118px;resize:vertical;background:rgba(8,8,10,.62);border:1px solid var(--line-gold);
+    border-radius:var(--r-sm);padding:14px 15px;color:var(--cream);font-family:inherit;font-size:.96rem}
+  .lead-form textarea::placeholder{color:var(--cream-faint)}
+  .lead-form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)}
+  @media(max-width:980px){.concierge{grid-template-columns:1fr}.concierge__intro{position:static}.service-grid,.service-options{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-theme="dark">
@@ -111,6 +128,64 @@
   </div>
 </section>
 
+<!-- WHITE GLOVE -->
+<section class="section section--ink" id="white-glove" data-screen-label="White glove travel">
+  <div class="container">
+    <div class="concierge">
+      <div class="concierge__intro reveal">
+        <p class="eyebrow">White glove service</p>
+        <h2 class="h2" style="margin:14px 0 18px">Private travel, stays and arrival support</h2>
+        <p class="lead">For guests who need a higher-touch travel plan, request private jet support, hotels and villas, airport transfer, or private car hire for The Headies Canada weekend.</p>
+        <div class="service-grid">
+          <article class="service-card">
+            <i data-lucide="plane" class="icon"></i>
+            <h3>Private Jets</h3>
+            <p>Charter enquiry support for private arrivals, group movement and executive travel.</p>
+          </article>
+          <article class="service-card">
+            <i data-lucide="building-2" class="icon"></i>
+            <h3>Hotels and Villas</h3>
+            <p>Premium hotel blocks, villa requests and private accommodation preferences.</p>
+          </article>
+          <article class="service-card">
+            <i data-lucide="route" class="icon"></i>
+            <h3>Airport Transfer</h3>
+            <p>Arrival and departure movement from airport to hotel, venue and private events.</p>
+          </article>
+          <article class="service-card">
+            <i data-lucide="car-front" class="icon"></i>
+            <h3>Private Car Hire</h3>
+            <p>Chauffeured cars, SUVs and dedicated vehicles for guests and teams.</p>
+          </article>
+        </div>
+      </div>
+      <div class="lead-form lead-form--panel reveal" data-d="1">
+        <p class="eyebrow">Request concierge support</p>
+        <h3 class="h3" style="margin:12px 0 8px">Tell us what you need</h3>
+        <p class="muted">A travel concierge will use this request to prepare the right partner follow-up.</p>
+        <form class="lead-form" data-white-glove-form>
+          <div class="lead-form__grid">
+            <label>Name <input name="name" type="text" autocomplete="name" placeholder="Full name" required></label>
+            <label>Email <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+            <label>Phone <input name="phone" type="tel" autocomplete="tel" placeholder="+234..." required></label>
+          </div>
+          <div class="service-options" aria-label="White glove service options">
+            <label class="service-option"><input type="checkbox" name="services" value="Private Jets"> Private Jets</label>
+            <label class="service-option"><input type="checkbox" name="services" value="Hotels and Villas"> Hotels and Villas</label>
+            <label class="service-option"><input type="checkbox" name="services" value="Airport Transfer"> Airport Transfer</label>
+            <label class="service-option"><input type="checkbox" name="services" value="Private Car Hire"> Private Car Hire</label>
+          </div>
+          <label>Trip notes <textarea name="notes" placeholder="Share dates, guest count, preferred city, vehicle type, room style, or any special requirements."></textarea></label>
+          <div class="lead-form__actions">
+            <button class="btn btn-gold" type="submit">Request white glove service</button>
+            <p class="lead-form__status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PACKAGES -->
 <section class="section" data-screen-label="Packages">
   <div class="container">
@@ -126,6 +201,7 @@
           <div class="pkg__row"><i data-lucide="star" class="icon"></i> 4★ downtown hotel</div>
           <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
           <a href="#early-access" class="btn btn-gold" style="width:100%;margin-top:20px">Get early access</a>
+          <a href="#white-glove" class="tlink" style="margin-top:14px">Need white glove support? <i data-lucide="arrow-right" class="icon" style="width:14px"></i></a>
         </div>
       </article>
       <article class="pkg reveal" data-d="2">
@@ -135,6 +211,7 @@
           <div class="pkg__row"><i data-lucide="ticket" class="icon"></i> Premium event ticket included</div>
           <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
           <a href="#early-access" class="btn btn-gold" style="width:100%;margin-top:20px">Get early access</a>
+          <a href="#white-glove" class="tlink" style="margin-top:14px">Need white glove support? <i data-lucide="arrow-right" class="icon" style="width:14px"></i></a>
         </div>
       </article>
       <article class="pkg reveal" data-d="3">
@@ -144,6 +221,7 @@
           <div class="pkg__row"><i data-lucide="crown" class="icon"></i> 5★ suite + VIP ticket + transfers</div>
           <div class="pss"><i data-lucide="credit-card" class="icon"></i> Pay Small Small available</div>
           <a href="#early-access" class="btn btn-gold" style="width:100%;margin-top:20px">Get early access</a>
+          <a href="#white-glove" class="tlink" style="margin-top:14px">Need white glove support? <i data-lucide="arrow-right" class="icon" style="width:14px"></i></a>
         </div>
       </article>
     </div>
@@ -205,7 +283,7 @@
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="image-slot.js"></script>
-<script src="headies.js?v=20260614-video-fix"></script>
+<script src="headies.js?v=20260615-white-glove"></script>
 <script>
   lucide.createIcons();
 </script>
