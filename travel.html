@@ -77,9 +77,13 @@
   .concierge__visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.08),rgba(8,8,10,.62));z-index:1}
   .concierge__caption{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
   .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:26px}
-  .service-card{border:1px solid var(--line-gold);border-radius:var(--r);background:var(--bg-card);padding:22px;min-height:178px}
-  .service-card .icon{width:28px;height:28px;color:var(--gold);margin-bottom:18px}
-  .service-card h3{font-size:1.22rem;margin-bottom:8px}
+  .service-card{border:1px solid var(--line-gold);border-radius:var(--r);background:var(--bg-card);overflow:hidden;min-height:0}
+  .service-card__media{position:relative;aspect-ratio:16/10;background:var(--ink-800)}
+  .service-card__media image-slot,.service-card__media .ph{position:absolute;inset:0;height:100%;width:100%}
+  .service-card__media::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,8,10,.04),rgba(8,8,10,.42))}
+  .service-card__body{padding:18px;min-height:156px}
+  .service-card .icon{width:24px;height:24px;color:var(--gold);margin-bottom:14px}
+  .service-card h3{font-size:1.16rem;margin-bottom:8px}
   .service-card p{font-size:.92rem;color:var(--fg-dim)}
   .service-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .service-option{display:flex;align-items:center;gap:10px;border:1px solid var(--line-gold);border-radius:var(--r-sm);
@@ -297,7 +301,7 @@
       <div class="concierge__intro reveal">
         <p class="eyebrow">Exclusive Luxury Service</p>
         <h2 class="h2" style="margin:14px 0 18px">Private travel, stays and arrival support</h2>
-        <p class="lead">For guests who need a higher-touch travel plan, request private jet support, hotels and villas, airport transfer, or private car hire for The Headies Canada weekend.</p>
+        <p class="lead">For guests who need a higher-touch travel plan, request commercial flight support, private jet support, hotels and villas, airport transfer, or private car hire for The Headies Canada weekend.</p>
         <div class="concierge__visual">
           <image-slot id="travel-concierge" src="https://images.unsplash.com/photo-1759614581731-4c7090648de0?auto=format&fit=crop&q=72&w=1200" class="media-fill" placeholder="Drop a private jet image"></image-slot>
           <div class="ph media-fill" style="z-index:-1"></div>
@@ -305,24 +309,44 @@
         </div>
         <div class="service-grid">
           <article class="service-card">
-            <i data-lucide="plane" class="icon"></i>
-            <h3>Private Jets</h3>
-            <p>Charter enquiry support for private arrivals, group movement and executive travel.</p>
+            <div class="service-card__media"><image-slot id="service-private-jets" src="https://images.unsplash.com/photo-1759614581731-4c7090648de0?auto=format&fit=crop&q=72&w=900" class="media-fill" placeholder="Drop a private jet image"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+            <div class="service-card__body">
+              <i data-lucide="plane" class="icon"></i>
+              <h3>Private Jets</h3>
+              <p>Charter enquiry support for private arrivals, group movement and executive travel.</p>
+            </div>
           </article>
           <article class="service-card">
-            <i data-lucide="building-2" class="icon"></i>
-            <h3>Hotels and Villas</h3>
-            <p>Premium hotel blocks, villa requests and private accommodation preferences.</p>
+            <div class="service-card__media"><image-slot id="service-commercial-flight" src="https://images.unsplash.com/photo-1700811476854-52f99a9f2ec1?auto=format&fit=crop&q=72&w=900" class="media-fill" placeholder="Drop a commercial flight image"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+            <div class="service-card__body">
+              <i data-lucide="plane-takeoff" class="icon"></i>
+              <h3>Commercial Flight</h3>
+              <p>Flight enquiry support for cabin class, routing, group travel and arrival timing.</p>
+            </div>
           </article>
           <article class="service-card">
-            <i data-lucide="route" class="icon"></i>
-            <h3>Airport Transfer</h3>
-            <p>Arrival and departure movement from airport to hotel, venue and private events.</p>
+            <div class="service-card__media"><image-slot id="service-hotels-villas" src="https://images.unsplash.com/photo-1621293954908-907159247fc8?auto=format&fit=crop&q=72&w=900" class="media-fill" placeholder="Drop a hotel lobby image"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+            <div class="service-card__body">
+              <i data-lucide="building-2" class="icon"></i>
+              <h3>Hotels and Villas</h3>
+              <p>Premium hotel blocks, villa requests and private accommodation preferences.</p>
+            </div>
           </article>
           <article class="service-card">
-            <i data-lucide="car-front" class="icon"></i>
-            <h3>Private Car Hire</h3>
-            <p>Chauffeured cars, SUVs and dedicated vehicles for guests and teams.</p>
+            <div class="service-card__media"><image-slot id="service-airport-transfer" src="https://images.unsplash.com/photo-1779617576988-353ac4c83d35?auto=format&fit=crop&q=72&w=900" class="media-fill" placeholder="Drop an airport transfer image"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+            <div class="service-card__body">
+              <i data-lucide="route" class="icon"></i>
+              <h3>Airport Transfer</h3>
+              <p>Arrival and departure movement from airport to hotel, venue and private events.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-card__media"><image-slot id="service-private-car" src="https://images.unsplash.com/photo-1772468237159-674f05233185?auto=format&fit=crop&q=72&w=900" class="media-fill" placeholder="Drop a private car hire image"></image-slot><div class="ph media-fill" style="z-index:-1"></div></div>
+            <div class="service-card__body">
+              <i data-lucide="car-front" class="icon"></i>
+              <h3>Private Car Hire</h3>
+              <p>Chauffeured cars, SUVs and dedicated vehicles for guests and teams.</p>
+            </div>
           </article>
         </div>
       </div>
