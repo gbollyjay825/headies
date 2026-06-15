@@ -169,11 +169,11 @@ Checks completed on 2026-06-14:
 Checks completed on 2026-06-15:
 
 - Travel landing refresh: replaced the simple travel page with a full landing page hero, travel support strip, image-led early-access section, package cards, luxury service request area, trust strip, and final CTA.
-- Travel imagery: switched the page from Headies event photos to relatable travel visuals for airport travel, luggage, airplane window, hotel stay, airport transfer, and Toronto destination context.
+- Travel imagery: switched the page from Headies event photos to relatable travel visuals for airport travel, luggage, business class, hotel stay, airport transfer, and Toronto destination context.
 - Travel image source references:
   - Airport traveler hero: https://unsplash.com/photos/walking-man-holding-luggage-3ot5ppgOhew
   - Airport luggage: https://unsplash.com/photos/green-suitcase-with-travel-stickers-in-airport-terminal-TQ1lLBpy6X4
-  - Airplane window: https://unsplash.com/photos/airplane-wing-and-clouds-seen-through-window-at-sunset-GgNUhBO1-dk
+  - Business class cabin: https://unsplash.com/photos/a-view-of-the-inside-of-an-airplane-with-a-television-n57AHgkaxyQ
   - Hotel room luggage: https://unsplash.com/photos/a-blue-suitcase-sitting-on-the-floor-next-to-a-bed-QStz1IM5eSg
   - Airport transfer: https://unsplash.com/photos/airport-terminal-vehicle-and-luggage-carts-A5MTm7YTUrw
   - Toronto skyline: https://unsplash.com/photos/toronto-skyline-with-cn-tower-under-cloudy-sky-WzWa6d4tHKs
