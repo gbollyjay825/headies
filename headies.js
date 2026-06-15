@@ -241,7 +241,7 @@
         }
         var services=Array.prototype.slice.call(form.querySelectorAll('input[name="services"]:checked')).map(function(input){return input.value;});
         if(!services.length){
-          if(status)status.textContent='Select at least one white glove service.';
+          if(status)status.textContent='Select at least one luxury service.';
           return;
         }
         var request={
@@ -258,7 +258,7 @@
           requests.push(request);
           localStorage.setItem('headiesWhiteGloveRequests',JSON.stringify(requests.slice(-50)));
         }catch(err){}
-        if(status)status.textContent='White glove request received. A travel concierge will follow up with next steps.';
+        if(status)status.textContent='Luxury service request received. A travel concierge will follow up with next steps.';
         form.reset();
       });
     });

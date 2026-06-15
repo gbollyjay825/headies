@@ -168,7 +168,7 @@ Checks completed on 2026-06-14:
 
 Checks completed on 2026-06-15:
 
-- Travel landing refresh: replaced the simple travel page with a full landing page hero, travel support strip, image-led early-access section, package cards, white glove request area, trust strip, and final CTA.
+- Travel landing refresh: replaced the simple travel page with a full landing page hero, travel support strip, image-led early-access section, package cards, luxury service request area, trust strip, and final CTA.
 - Travel imagery: switched the page from Headies event photos to relatable travel visuals for airport travel, luggage, airplane window, hotel stay, airport transfer, and Toronto destination context.
 - Travel image source references:
   - Airport traveler hero: https://unsplash.com/photos/walking-man-holding-luggage-3ot5ppgOhew
@@ -177,4 +177,4 @@ Checks completed on 2026-06-15:
   - Hotel room luggage: https://unsplash.com/photos/a-blue-suitcase-sitting-on-the-floor-next-to-a-bed-QStz1IM5eSg
   - Airport transfer: https://unsplash.com/photos/airport-terminal-vehicle-and-luggage-carts-A5MTm7YTUrw
   - Toronto skyline: https://unsplash.com/photos/toronto-skyline-with-cn-tower-under-cloudy-sky-WzWa6d4tHKs
-- Local verification: all travel landing images loaded after scrolling, desktop and mobile had no horizontal overflow, browser console was clean, and both early-access and white glove forms submitted with success messages.
+- Local verification: all travel landing images loaded after scrolling, desktop and mobile had no horizontal overflow, browser console was clean, and both early-access and luxury service forms submitted with success messages.
