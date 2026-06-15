@@ -312,7 +312,7 @@
         '<img class="media-img" src="'+esc(thumbForVideo(main))+'" alt="'+esc(main.title)+'">'+
         '<div class="legend__grad"></div><div class="play-btn"><span><i data-lucide="play" class="icon"></i></span></div>'+
         '<div style="position:absolute;left:24px;bottom:22px;z-index:3"><div class="card__tag">'+esc(main.tag)+'</div>'+
-        '<div style="font-family:var(--font-display);font-weight:800;font-size:1.5rem;max-width:24ch">'+esc(main.title)+'</div></div></div>';
+        '<div style="font-family:var(--font-display);font-weight:650;font-size:1.5rem;max-width:24ch">'+esc(main.title)+'</div></div></div>';
       var sideHtml=side.map(function(video){
         return '<div class="vrow" data-lb="'+esc(video.title)+'" data-video-url="'+esc(embedForVideo(video))+'" data-video-watch="'+esc(watchForVideo(video))+'">'+
           '<div class="vrow__thumb"><img class="media-img" loading="lazy" src="'+esc(thumbForVideo(video))+'" alt="'+esc(video.title)+'">'+

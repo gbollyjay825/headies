@@ -31,7 +31,7 @@ Mechanical extraction across readable PDFs found Calibri as the most common text
 Site implementation:
 
 - Body font: `Calibri`, with Hanken Grotesk/system fallbacks.
-- Display font: `Anton`, already imported, because it matches the newer 17th/18th deck headline look better than Calibri.
+- Display font: `Hanken Grotesk`, matching the lighter Travel page heading style now used globally.
 - Serif accent: Bodoni Moda retained only for selective editorial emphasis.
 
 ## Drive Source Map
@@ -97,7 +97,7 @@ python3 -m json.tool data/video-sources.json >/tmp/headies-video-sources.pretty.
 
 3. Replace site visual language
    - Use the 18th deck look as the lead visual system: dark photographic panels, magenta/cyan/gold accent lines, numbered editorial sections, bold uppercase headlines.
-   - Use Calibri for body copy and Anton for display headings.
+   - Use Calibri for body copy and Hanken Grotesk for display headings.
    - Reduce the current serif-heavy gala look where it conflicts with the newer deck.
 
 4. Upgrade homepage

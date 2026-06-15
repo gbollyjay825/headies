@@ -6,13 +6,8 @@
 <title>Travel Access · The Headies × Wakanow</title>
 <link rel="stylesheet" href="headies.css">
 <style>
-  .wkmark{font-family:'Hanken Grotesk',Calibri,system-ui,sans-serif;font-weight:700;font-size:1.18rem;letter-spacing:0;color:var(--cream)}
+  .wkmark{font-family:var(--font-display);font-weight:700;font-size:1.18rem;letter-spacing:0;color:var(--cream)}
   .partner-lockup{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .travel-hero .h-hero,.shead .h2,.access .h2,.luxury-head .h2,.landing-cta .h2,.lead-form .h3,.pkg h3,.service-card h3,.whyitem h4{
-    font-family:'Hanken Grotesk',Calibri,system-ui,sans-serif;
-    font-weight:650;
-    line-height:1.08;
-  }
   .shead .h2,.access .h2,.luxury-head .h2,.landing-cta .h2{font-size:clamp(1.85rem,3.2vw,3rem)}
   .lead-form .h3{font-size:clamp(1.35rem,2vw,2rem)}
 
@@ -22,7 +17,7 @@
   .travel-hero__shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,8,10,.94) 0%,rgba(8,8,10,.74) 46%,rgba(8,8,10,.2) 100%),linear-gradient(180deg,rgba(8,8,10,.18) 0%,rgba(8,8,10,.18) 42%,var(--ink-900) 100%)}
   .travel-hero__inner{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,370px);gap:clamp(30px,6vw,86px);align-items:center}
   .travel-hero h1{max-width:12ch;margin:14px 0}
-  .travel-hero .h-hero{font-size:clamp(2.75rem,4.8vw,4.7rem);font-weight:650;line-height:.98}
+  .travel-hero .h-hero{font-size:clamp(2.75rem,4.8vw,4.7rem);font-weight:var(--font-display-weight);line-height:.98}
   .travel-hero .lead{max-width:54ch;font-size:clamp(1rem,1.12vw,1.14rem);line-height:1.62}
   .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 24px}
   .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-gold);border-radius:var(--r-pill);background:rgba(8,8,10,.42);padding:9px 13px;color:var(--cream);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(4px)}
@@ -31,7 +26,7 @@
   .travel-proof{display:grid;gap:1px;border:1px solid var(--line-gold);background:var(--line-gold);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
   .travel-proof__item{background:rgba(8,8,10,.72);backdrop-filter:blur(10px);padding:18px 20px}
   .travel-proof__k{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800}
-  .travel-proof__v{font-family:'Hanken Grotesk',Calibri,system-ui,sans-serif;font-weight:650;font-size:1.22rem;line-height:1.12;margin-top:6px;color:var(--cream)}
+  .travel-proof__v{font-family:var(--font-display);font-weight:var(--font-display-weight);font-size:1.22rem;line-height:1.12;margin-top:6px;color:var(--cream)}
   .travel-proof__m{font-size:.86rem;color:var(--cream-dim);margin-top:6px}
   #early-access,#white-glove,#visa-request{scroll-margin-top:calc(var(--nav-h) + 24px)}
 
@@ -62,7 +57,7 @@
   .pkg:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
   .pkg__media{position:relative;aspect-ratio:16/10}
   .pkg__media image-slot,.pkg__media .ph{position:absolute;inset:0;height:100%}
-  .pkg__city{position:absolute;left:18px;bottom:14px;z-index:2;font-family:'Hanken Grotesk',Calibri,system-ui,sans-serif;font-weight:650;font-size:1.16rem;color:var(--cream)}
+  .pkg__city{position:absolute;left:18px;bottom:14px;z-index:2;font-family:var(--font-display);font-weight:var(--font-display-weight);font-size:1.16rem;color:var(--cream)}
   .pkg__body{padding:24px;display:grid;gap:14px}
   .pkg__tag{font-size:.62rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
   .pkg h3{font-size:1.18rem}
