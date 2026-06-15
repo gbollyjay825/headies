@@ -258,7 +258,7 @@
           requests.push(request);
           localStorage.setItem('headiesWhiteGloveRequests',JSON.stringify(requests.slice(-50)));
         }catch(err){}
-        if(status)status.textContent='Luxury service request received. A travel concierge will follow up with next steps.';
+        if(status)status.textContent='Exclusive luxury service request received. A travel concierge will follow up with next steps.';
         form.reset();
       });
     });
