@@ -264,6 +264,14 @@
     });
   }
 
-  function boot(){ initNav();initReveal();initCountUp();initCountdown();initLightbox();initCarousel();initTimelineDrag();initEarlyAccess(); }
+  function initIcons(){
+    if(window.lucide && typeof window.lucide.createIcons==='function'){
+      window.lucide.createIcons();
+    }
+  }
+
+  window.addEventListener('headies:lucide-ready',initIcons);
+
+  function boot(){ initNav();initReveal();initCountUp();initCountdown();initLightbox();initCarousel();initTimelineDrag();initEarlyAccess();initIcons(); }
   if(document.readyState!=='loading')boot(); else document.addEventListener('DOMContentLoaded',boot);
 })();
